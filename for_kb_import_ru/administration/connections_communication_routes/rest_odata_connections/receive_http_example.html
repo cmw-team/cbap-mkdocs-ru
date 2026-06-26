@@ -85,6 +85,15 @@
 </nav>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#настройка-nginx">
+<span class="md-ellipsis">
+      
+        Настройка NGINX
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link mkdocs_imported_link" href="#http_receive_example_scenario">
 <span class="md-ellipsis">
       
@@ -203,22 +212,14 @@
 <li><strong>Отключить</strong> — не регистрировать в журнале события получения запросов.</li>
 </ul>
 </li>
-<li>
-<p><strong>Базовый путь получения HTTP-запросов</strong> — добавьте <strong>путь URI</strong>, например <code>uploadData</code>. При необходимости введите дополнительный <strong>путь URI</strong> на вкладке «<strong>Интеграция</strong>» в свойствах <a class="mkdocs_imported_link" href="#http_receive_example_route">пути передачи данных</a>. Укажите результирующий путь на внешнем сервере в качестве получателя запроса, например:</p>
-<div class="highlight"><code><pre><span></span><code>https://&lt;hostname&gt;/api/public/adapter/uploadData</code> <br/></pre></code></div>
-</li>
-<li>
-<p><strong>Формат данных</strong> — выберите представление данных:</p>
-<ul>
-<li><strong>JSON</strong> — используется в данном примере;</li>
+<li><strong>Базовый путь получения HTTP-запросов</strong> — добавьте <strong>путь URI</strong>, например <code>uploadData</code>. При необходимости введите дополнительный <strong>путь URI</strong> на вкладке «<strong>Интеграция</strong>» в свойствах <a class="mkdocs_imported_link" href="#http_receive_example_route">пути передачи данных</a>.</li>
+<li><strong>Имя пользователя</strong> - не используется в данном примере.</li>
+<li><strong>Пароль</strong> - не используется в данном примере.</li>
+<li><strong>Порт</strong> - порт, на котором будут ожидаться запросы. Для работы нужно внести изменения в конфигурацию nginx (ссылка на область статьи после путей передачи данных).</li>
+<li><strong>Формат данных</strong> — выберите представление данных:<ul>
+<li><strong>JSON</strong> — используется в данном примере;</li>
 <li><strong>XML</strong>;</li>
 <li><strong>Простой текст</strong>.</li>
-</ul>
-</li>
-<li><strong>Тип аутентификации</strong> — выберите способ проверки подлинности, используемый сервером:<ul>
-<li><strong>Отсутствует</strong>;</li>
-<li><strong>Базовая</strong>;</li>
-<li><strong>Аутентификация Windows</strong>.</li>
 </ul>
 </li>
 </ul>
@@ -312,8 +313,10 @@
 <h3 id="http_receive_example_route_integration">Интеграция</h3>
 <ol class="colored_numbers_list">
 <li>
-<p>При необходимости укажите дополнительный суффикс в поле «<strong>Путь URI</strong>». Этот суффикс будет добавлен к URL-адресу в поле «<strong>Базовый путь получения HTTP-запросов</strong>» (совпадает с путём, настроенным в <a class="mkdocs_imported_link" href="#http_receive_example_connection">подключении</a>). Укажите результирующий адрес на внешнем сервере в качестве получателя запросов, например:</p>
-<div class="highlight"><code><pre><span></span><code>https://&lt;hostname&gt;/api/public/adapter/uploadData</code> <br/></pre></code></div>
+<p>Время на ответ со стороны платформы - время, которое платформа может потратить на ответ </p>
+</li>
+<li>
+<p>При необходимости укажите дополнительный суффикс в поле «<strong>Путь URI</strong>». Этот суффикс будет добавлен к URL-адресу</p>
 </li>
 <li>
 <p>Укажите <strong>атрибуты для десериализации данных</strong>. По умолчанию следует указать <code>$</code> в обоих столбцах, чтобы получить всю структуру JSON из запроса. Для поиска определенного атрибута используйте JSONPath.</p>
@@ -323,6 +326,13 @@
 <figure class="screenshot_with_caption" markdown=""><img alt="Настройка интеграции" src="/platform/v5.0/administration/connections_communication_routes/rest_odata_connections/img/json4.png"/><figcaption class="caption">Настройка интеграции</figcaption></figure>
 </li>
 </ol>
+<h2 id="настройка-nginx">Настройка NGINX</h2>
+<p>Добавить в файл /etc/nginx/sites-available/comindware\<instancename> новый location для нового пути передачи данных.</instancename></p>
+<div class="highlight"><code><pre><span></span><code><span class="err">loca</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="err">/&lt;URI</span><span class="w"> </span><span class="err">подключения&gt;/&lt;URI</span><span class="w"> </span><span class="err">пути</span><span class="w"> </span><span class="err">передачи</span><span class="w"> </span><span class="err">данных&gt;</span></code> <br/><code><span class="w">    </span><span class="p">{</span></code> <br/><code><span class="w">        </span><span class="err">proxy_pass</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//127.0.0.1:&lt;PORT подключения&gt;;</span></code> <br/><code><span class="w">    </span><span class="p">}</span></code> <br/></pre></code></div>
+<div class="notice notice-info">
+<p class="admonition-title">Примечание</p>
+<p>Для каждого пути передачи данных на получение запросов надо добавить свой отдельный location.</p>
+</div>
 <p><a class="mkdocs_imported_link" href="" id="scenario_configure"></a></p>
 <h2 class="pageBreakBefore" id="http_receive_example_scenario">Настройка сценария</h2>
 <ol class="colored_numbers_list">
@@ -412,11 +422,9 @@
 </li>
 <li>
 <p>Проверьте обработку запроса: должны быть созданы записи в шаблоне <em>«Заказы»</em>, соответствующие полученному запросу, как показано на иллюстрации:</p>
+<figure class="screenshot_with_caption" markdown=""><img alt="Полученные заказы" src="/platform/v5.0/administration/connections_communication_routes/rest_odata_connections/img/json9.jpg"/><figcaption class="caption">Полученные заказы</figcaption></figure>
 </li>
 </ol>
-<figure class="screenshot_with_caption">
-<p><img alt="Полученные заказы" src="/platform/v5.0/administration/connections_communication_routes/rest_odata_connections/img/json9.jpg"/></p><figcaption class="caption">Полученные заказы</figcaption>
-</figure>
 <div class="relatedTopics">
 <h2 id="связанные-статьи">Связанные статьи</h2>
 <ul>
