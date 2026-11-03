@@ -41,16 +41,16 @@ _![Переход к странице «Администрирование» и�
 
 ### Инфраструктура
 
-* [Мониторинг][monitoring]
 * [Журналы событий][logs]
 * [Лицензирование][licensing]
 * [Резервное копирование][backup_configure]
-* [Управление системными службами][system_service_management]
-* [Список подключений][connections]
-* [Производительность][performance]
+* [Подключения][connections]
 * [Конфигурация журналирования][logging_configuration]
 * [Глобальная конфигурация][global_configuration]
 * [Адаптеры][adapters]
 * [Ключи аутентификации][authentication_keys]
+<!-- * [Мониторинг][monitoring] -->
+<!-- * [Управление системными службами][system_service_management] -->
+<!-- * [Производительность][performance] -->
 
 {% include-markdown ".snippets/hyperlinks_mkdocs_to_kb_map.md" %}
