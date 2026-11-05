@@ -143,9 +143,9 @@ _![Журнал трассировки событий](logs_event_tracing.png)_
 --8<-- "related_topics_heading.md"
 
 - _[Глобальная конфигурация][global_configuration]_
-- _[Мониторинг][monitoring]_
-- _[Производительность][performance]_
 - _[Подсистема журналирования][logging_engine]_
+<!-- - _[Мониторинг][monitoring]_ -->
+<!-- - _[Производительность][performance]_ -->
 
 </div>
 
