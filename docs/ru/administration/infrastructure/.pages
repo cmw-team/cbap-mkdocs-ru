@@ -1,10 +1,8 @@
 title: Инфраструктура
 
 nav:
-    - monitoring.md
     - logs.md
     - licensing.md
-    - system_service_management.md
     - logging_configuration.md
     - global_configuration.md
     - adapters.md
