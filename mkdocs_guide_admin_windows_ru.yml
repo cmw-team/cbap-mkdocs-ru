@@ -75,10 +75,8 @@ nav:
         - administration/account_administration/accounts_dc_sync/windows/sso_authentication_configure_windows.md
 
     - Инфраструктура:
-      - administration/infrastructure/monitoring.md
       - administration/infrastructure/logs.md
       - administration/infrastructure/licensing.md
-      - administration/infrastructure/system_service_management.md
       - administration/infrastructure/logging_configuration.md
       - administration/infrastructure/global_configuration.md
       - administration/infrastructure/adapters.md
@@ -224,6 +222,8 @@ exclude_docs: |
   administration/connections_communication_routes/system_connections/elasticsearch_connection.md
   administration/connections_communication_routes/system_connections/notifications/system_notifications.md
   administration/infrastructure/performance.md
+  administration/infrastructure/monitoring.md
+  administration/infrastructure/system_service_management.md
   administration/deploy/toc_deploy_auxiliary_software.md
   administration/deploy/commissioning_recommendations.md
   tutorials/tutorial_n3/lesson_1.md
