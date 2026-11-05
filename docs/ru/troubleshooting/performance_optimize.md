@@ -180,17 +180,15 @@ hide: tags
 1. **Мониторинг и трассировка**
 
     - Используйте инструменты трассировки мониторинга работы **{{ productName }}**для выявления узких мест:
-     - страницу «[Производительность][performance]»;
-     - страницу «[Журналы событий][logs]»;
-     - страницу «[Мониторинг][monitoring]»;
-     - [файловые журналы][logging_engine];
-     - тайминги запросов браузера;
+        - страницу «[Журналы событий][logs]»;
+        - [файловые журналы][logging_engine];
+        - тайминги запросов браузера;
     - Используйте инструменты профилирования производительности вебсайта, например Webpagetest, профайлер JavaScript в Chrome;
     - Используйте инструменты мониторинга производительности сервера, например Zabbix, Prometheus, Grafana, VmStat (`sysstat`), `top`, `htop`, `perf` и `flamegraph.pl`, .
     - Используйте инструменты мониторинга:
-     - {{ openSearchVariants }} — Kibana.
-     - Apache {{ apacheKafkaVariants }} — AKHQ, Kowl, Kafdrop, UI for Apache Kafka, Lenses, CMAK, Confluent CC, Conduktor.
-     - {{ apacheIgniteVariants }} — JMX и MBeans, системные представления в SQL, Yardstick Framework.
+        - {{ openSearchVariants }} — Kibana.
+        - Apache {{ apacheKafkaVariants }} — AKHQ, Kowl, Kafdrop, UI for Apache Kafka, Lenses, CMAK, Confluent CC, Conduktor.
+        - {{ apacheIgniteVariants }} — JMX и MBeans, системные представления в SQL, Yardstick Framework.
     - В журналах обращайте внимание на разницу во времени между началом и завершением событий, потенциально вызывающих снижение производительности.
 
 2. **Резервное копирование и индексация**
@@ -202,8 +200,8 @@ hide: tags
 
     - Для отладки отключите системные службы, вызывающие подозрения.
     - В случае неудачной настройки:
-     - остановите соответствующие системные службы;
-     - удалите неудачно настроенные сущности или исправьте настройку;
-     - снова включите системные службы.
+        - остановите соответствующие системные службы;
+        - удалите неудачно настроенные сущности или исправьте настройку;
+        - снова включите системные службы.
 
 {% include-markdown ".snippets/hyperlinks_mkdocs_to_kb_map.md" %}
