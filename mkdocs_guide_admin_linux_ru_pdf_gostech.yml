@@ -66,10 +66,8 @@ nav:
       - Синхронизация с сервером каталогов:
         - administration/account_administration/accounts_dc_sync/index.md
     - Инфраструктура:
-      - administration/infrastructure/monitoring.md
       - administration/infrastructure/logs.md
       - administration/infrastructure/licensing.md
-      - administration/infrastructure/system_service_management.md
       - administration/infrastructure/logging_configuration.md
       - administration/infrastructure/global_configuration.md
       - administration/infrastructure/authentication_keys.md
@@ -192,6 +190,8 @@ exclude_docs: |
   administration/connections_communication_routes/rest_odata_connections/http_receive_file.md
   administration/infrastructure/adapters.md
   administration/infrastructure/performance.md
+  administration/infrastructure/monitoring.md
+  administration/infrastructure/system_service_management.md
   product_description.md
   architect/**
   business_apps/application_configure_recommendations.md

@@ -111,10 +111,8 @@ nav:
         - Инструкции для Windows:
           - administration/account_administration/accounts_dc_sync/windows/sso_authentication_configure_windows.md
     - Инфраструктура:
-      - administration/infrastructure/monitoring.md
       - administration/infrastructure/logs.md
       - administration/infrastructure/licensing.md
-      - administration/infrastructure/system_service_management.md
       - administration/infrastructure/logging_configuration.md
       - administration/infrastructure/global_configuration.md
       - administration/infrastructure/adapters.md
@@ -200,6 +198,8 @@ exclude_docs: |
   product_description.md
   administration/architecture/functions.md
   administration/infrastructure/performance.md
+  administration/infrastructure/monitoring.md
+  administration/infrastructure/system_service_management.md
   administration/connections_communication_routes/email_connections/process_email_configure_include.md
   administration/connections_communication_routes/rest_odata_connections/1c_integrations.md
   administration/connections_communication_routes/rest_odata_connections/send_http_example.md
