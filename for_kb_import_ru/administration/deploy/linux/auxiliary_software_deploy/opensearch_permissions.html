@@ -76,6 +76,64 @@
 </nav>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#opensearch_permissions_cloud">
+<span class="md-ellipsis">
+      
+        Дополнительные разрешения для облачных провайдеров
+      
+    </span>
+</a>
+<nav aria-label="Дополнительные разрешения для облачных провайдеров" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#разрешения-для-мониторинга-кластера">
+<span class="md-ellipsis">
+      
+        Разрешения для мониторинга кластера
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#разрешения-для-шаблонов-индексов-index-templates">
+<span class="md-ellipsis">
+      
+        Разрешения для шаблонов индексов (Index Templates)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#разрешения-для-массовой-записи-данных-bulk">
+<span class="md-ellipsis">
+      
+        Разрешения для массовой записи данных (Bulk)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#разрешения-на-получение-маппингов-полей-и-разрешение-имён-индексов">
+<span class="md-ellipsis">
+      
+        Разрешения на получение маппингов полей и разрешение имён индексов
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link mkdocs_imported_link" href="#групповые-разрешения">
+<span class="md-ellipsis">
+      
+        Групповые разрешения
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link mkdocs_imported_link" href="#opensearch_permissions_role_config">
 <span class="md-ellipsis">
       
@@ -316,6 +374,132 @@
 <td style="text-align: left;"><code>write</code></td>
 <td style="text-align: left;">Глобальная запись на уровне кластера</td>
 <td style="text-align: left;">Базовый доступ ко всем операциям записи</td>
+</tr>
+</tbody>
+</table>
+<h2 id="opensearch_permissions_cloud">Дополнительные разрешения для облачных провайдеров</h2>
+<p>При использовании для индексации OpenSearch (Elasticsearch) серверов внешней облачной инфраструктуры перечень разрешений может отличаться от перечня для локального развёртывания и определяется требованиями конкретного провайдера. Некоторые облачные провайдеры (например, Яндекс.Облако) могут требовать явного указания дополнительных разрешений, которые в локальной установке либо работают по умолчанию, либо не требуются в силу особенностей конфигурации.</p>
+<p>Ниже приведён перечень дополнительных разрешений, которые могут потребоваться при настройке подключения Comindware Platform к Managed OpenSearch в Яндекс.Облаке. Все разрешения указаны в формате, используемому в OpenSearch Security Plugin (более подробно см. <a class="mkdocs_imported_link" href="https://docs.opensearch.org/latest/security/access-control/permissions/">документацию OpenSearch по Permissions</a>).</p>
+<h3 id="разрешения-для-мониторинга-кластера">Разрешения для мониторинга кластера</h3>
+<table style="width: 100%;">
+<thead>
+<tr>
+<th>Разрешение / Action Group</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cluster_monitor</code></td>
+<td>Группа действий, предоставляющая все разрешения на мониторинг кластера. Эквивалент <code>cluster:monitor/*</code>.</td>
+</tr>
+<tr>
+<td><code>cluster:monitor/*</code></td>
+<td>«Широкий» мониторинг: даёт доступ ко всем операциям мониторинга кластера.</td>
+</tr>
+<tr>
+<td><code>cluster:monitor/health</code></td>
+<td>Проверка здоровья кластера (<code>GET _cluster/health</code>).</td>
+</tr>
+<tr>
+<td><code>cluster:monitor/main</code></td>
+<td>Получение основной информации о кластере (<code>GET /</code>).</td>
+</tr>
+<tr>
+<td><code>cluster:monitor/nodes/info</code></td>
+<td>Получение информации об узлах кластера (<code>GET _nodes</code>).</td>
+</tr>
+<tr>
+<td><code>cluster:monitor/state</code></td>
+<td>Получение состояния кластера (<code>GET _cluster/state</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="разрешения-для-шаблонов-индексов-index-templates">Разрешения для шаблонов индексов (Index Templates)</h3>
+<table style="width: 100%;">
+<thead>
+<tr>
+<th>Разрешение</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indices:admin/index_template/delete</code></td>
+<td>Удаление шаблонов индексов (<code>DELETE _index_template</code>).</td>
+</tr>
+<tr>
+<td><code>indices:admin/index_template/get</code></td>
+<td>Просмотр шаблонов индексов (<code>GET _index_template</code>).</td>
+</tr>
+<tr>
+<td><code>indices:admin/index_template/put</code></td>
+<td>Создание и обновление шаблонов индексов (<code>PUT _index_template</code>).</td>
+</tr>
+<tr>
+<td><code>indices:admin/index_template/simulate</code></td>
+<td>Симуляция применения шаблона индекса (<code>POST _index_template/_simulate</code>).</td>
+</tr>
+<tr>
+<td><code>indices:admin/index_template/simulate_index</code></td>
+<td>Симуляция создания индекса на основе шаблона (<code>POST _index_template/_simulate_index</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="разрешения-для-массовой-записи-данных-bulk">Разрешения для массовой записи данных (Bulk)</h3>
+<table style="width: 100%;">
+<thead>
+<tr>
+<th>Разрешение</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indices:data/write/bulk*</code></td>
+<td>Массовая запись данных (<code>POST _bulk</code>). В некоторых конфигурациях безопасности должно быть явно указано отдельно. Может потребоваться настройка как на уровне кластера, так и на уровне индекса.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="разрешения-на-получение-маппингов-полей-и-разрешение-имён-индексов">Разрешения на получение маппингов полей и разрешение имён индексов</h3>
+<table style="width: 100%;">
+<thead>
+<tr>
+<th>Разрешение</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indices:admin/mappings/fields/get</code></td>
+<td>Получение маппингов полей индекса (<code>GET _mapping/field</code>).</td>
+</tr>
+<tr>
+<td><code>indices:admin/mappings/fields/get*</code></td>
+<td>Все разрешения на получение маппингов полей.</td>
+</tr>
+<tr>
+<td><code>indices:admin/resolve/index</code></td>
+<td>Разрешение имён индексов, алиасов и data streams.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="групповые-разрешения">Групповые разрешения</h3>
+<table style="width: 100%;">
+<thead>
+<tr>
+<th>Разрешение</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indices:data/read*</code></td>
+<td>Все разрешения на чтение данных индекса (search, get, mget, msearch, scroll и др.).</td>
+</tr>
+<tr>
+<td><code>indices:data/write*</code></td>
+<td>Все разрешения на запись данных индекса (index, update, bulk, delete, reindex и др.).</td>
 </tr>
 </tbody>
 </table>
