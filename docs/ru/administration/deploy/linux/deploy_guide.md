@@ -92,7 +92,7 @@ hide: tags
 
     - `-p` — установить обязательное вспомогательное ПО.
     - `-d` — установить или переустановить ПО .NET (необязательный ключ).
-    - `-e` или `-o` — установить службу Elasticsearch или OpenSearch (необязательный ключ).
+    - `-o` — установить службу OpenSearch (необязательный ключ).
     - `-i` — установить службу Apache Ignite (необязательный ключ).
     - `-kc` — установить клиент Apache Kafka (необязательный ключ).
     - `-k` — установить службу Apache Kafka (необязательный ключ).
@@ -132,8 +132,8 @@ hide: tags
     OK     CBAP data folder created.
     OK     CBAP logs folder created.
     OK     CBAP dotnet folder created.
-    OK     Local elasticsearch server installed: No 
-    OK     Local elasticsearch server started: No 
+    OK     Local opensearch server installed: No 
+    OK     Local opensearch server started: No 
     OK     Local kafka server installed: No 
     OK     Local kafka server started: No 
     OK     Final status.
@@ -643,9 +643,7 @@ mmap(PROT_NONE) failed
     Скрипт `delete.sh` поддерживает следующие ключи:
 
     - `-n=<instanceName>` — удалить экземпляр ПО с указанным именем (**обязательный** ключ).
-    - `--deleteData` — безвозвратно удалить все файлы базы данных экземпляра ПО (необязательный ключ). Удаляются файлы, а директория экземпляра ПО остаётся, её можно удалить вручную.
     - `--deleteLogs` — безвозвратно удалить директорию со всеми файлами журналов экземпляра ПО (необязательный ключ).
-    - `--deleteBackups` — безвозвратно удалить все резервные копии экземпляра ПО (необязательный ключ).
     - `-h` — вызов краткой справки по использованию скрипта (указывать только без остальных ключей).
 
 5. Удостоверьтесь, что экземпляр ПО был успешно удалён, просмотрев список установленных экземпляров ПО:
